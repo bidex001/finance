@@ -2,13 +2,13 @@
 import React from "react";
 import Header from "../component/header";
 import { useState } from "react";
-import { AppContext } from "../context/userContext";
 
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IoCallSharp } from "react-icons/io5";
 import { IoLocation } from "react-icons/io5";
+import axios from "axios";
 
 const Page = () => {
   const [data, setData] = useState({
@@ -25,6 +25,8 @@ const Page = () => {
     yearsAtCurrent: "",
     education: "",
     status: "",
+    employement: '',
+    grantRecieved: 'yes',
     income: "",
     debt: "",
     phone: "",
@@ -33,12 +35,22 @@ const Page = () => {
     paymentType: "",
   });
 
-  const [gender, setGender] = useState("");
-  const [dob, setDob] = useState("");
-  const [nyrs, setNyrs] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [amount, setAmount] = useState("");
-  const [payment, setPayment] = useState("");
+  async function handleSubmit(e) {
+    e.preventDefault()
+    console.log("Submitting form", data)
+
+    try {
+      const res = await axios.post("/api/getMail", data, {
+        headers: { "Content-Type": "application/json" },
+      })
+      console.log("Response", res)
+      alert("successful")
+    } catch (error) {
+      const message = error?.response?.data?.message || error?.message || "Submission failed"
+      console.error("Submission failed", message)
+      alert(message)
+    }
+  }
 
   return (
     <div>
@@ -67,126 +79,188 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="flex flex-col px-20 pl-30 pt-30 pb-30 [&_h2]:text-4xl [&_h2]:font-semibold
-       [&_p]:uppercase [&_p]:mt-6 [&_p]:mb-10 [&_p]:font-mono [&_p]:font-bold">
-        <h2>CGGF Application Form</h2>
-        <p>
+      <div className="flex flex-col gap-5 py-17 px-10  test-class">
+        <h2 className="text-4xl font-bold ">CGGF Application Form</h2>
+        <p className="uppercase text-lg tracking-widest font-semibold">
           all application reguirements are to be filled out correctly
         </p>
 
-        <form className="flex flex-wrap border w-3/4 items-center 
-          [&_label]:block [&_label]:text-l [&_label]:font-semibold [&_label]:capitalize
-           ">
-          <div className="">
-            <label htmlFor="fname">first name</label>
-            <input type="text" required className="border" />
+        <form onSubmit={handleSubmit}
+        className="flex flex-col gap-8 w-[1000px]">
+        <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+            <div className="flex flex-col gap-2">
+        <label htmlFor="fname" className="form-label">first name <span className="text-red-500">*</span></label>    
+            <input
+              value={data.name}
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+              type="text" required className="border outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
           <div>
-            <label htmlFor="fname ">middle name</label>
-            <input type="text" required className="border" />
+            <label htmlFor="fname " className="form-label">middle name <span className="text-red-500">*</span></label>
+            <input
+              value={data.middleName}
+              onChange={(e) => setData({ ...data, middleName: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
+          </div>
+        </div>
+
+         <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+           <div className="flex flex-col gap-2">
+            <label htmlFor="fname " className="form-label">surname <span className="text-red-500">*</span></label>
+            <input
+              value={data.surName}
+              onChange={(e) => setData({ ...data, surName: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
-          <div>
-            <label htmlFor="fname ">surname</label>
-            <input type="text" required className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="gender ">gender</label>
+          <div  className="flex flex-col gap-2" >
+            <label htmlFor="gender " className="form-label">gender <span className="text-red-500">*</span></label>
             <select
               id="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              className="border border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
+              value={data.gender}
+              onChange={(e) => setData({ ...data, gender: e.target.value })}
+              className="border border-gray-300 w-full rounded-md p-3 outline-none focus:border-blue-500"
             >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
           </div>
+         </div>
 
-          <div>
-            <label htmlFor="dob ">date of birth</label>
+         <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+           <div className="flex flex-col gap-2">
+            <label htmlFor="dob " className="form-label">date of birth <span className="text-red-500">*</span></label>
             <input
               type="date"
               id="dob"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-              className="border border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
+              value={data.dob}
+              onChange={(e) => setData({ ...data, dob: e.target.value })}
+              className="border border-gray-300 rounded w-full md p-3 outline-none focus:border-blue-500"
             />
           </div>
 
           <div>
-            <label htmlFor="s.add ">street address</label>
-            <input type="text" required className="border" />
+            <label htmlFor="s.add " className="form-label">street address <span className="text-red-500">*</span></label>
+            <input
+              value={data.address}
+              onChange={(e) => setData({ ...data, address: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
+          </div>
+         </div>
+
+         <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+           <div className="flex flex-col gap-2">
+            <label htmlFor="suite " className="form-label">apartment, suite, etc <span className="text-red-500">*</span></label>
+            <input
+              value={data.apartment}
+              onChange={(e) => setData({ ...data, apartment: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
+          </div>
+
+          <div >
+            <label htmlFor="city " className="form-label">city <span className="text-red-500">*</span></label>
+            <input
+              value={data.city}
+              onChange={(e) => setData({ ...data, city: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
+          </div>
+         </div>
+
+   <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+           <div className="">
+            <label htmlFor="province " className="form-label">province <span className="text-red-500">*</span></label>
+            <input
+              value={data.province}
+              onChange={(e) => setData({ ...data, province: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
           <div>
-            <label htmlFor="suite ">apartment, suite, etc</label>
-            <input type="text" required className="border" />
+            <label htmlFor="zip " className="form-label">zip code <span className="text-red-500">*</span></label>
+            <input
+              value={data.zipCode}
+              onChange={(e) => setData({ ...data, zipCode: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
-          <div>
-            <label htmlFor="city ">city</label>
-            <input type="text" required className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="province ">province</label>
-            <input type="text" required className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="zip ">zip code</label>
-            <input type="text" required className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="yearsatcurrent ">
-              Number of years at current address
+   </div>
+         <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+           <div className="flex flex-col gap-2">
+            <label htmlFor="yearsatcurrent " className="form-label">
+              Number of years at current address <span className="text-red-500">*</span>
             </label>
             <select
               id="nyrs"
-              value={nyrs}
-              onChange={(e) => setNyrs(e.target.value)}
+
+              value={data.yearsAtCurrent}
+              onChange={(e) => setData({ ...data, yearsAtCurrent: e.target.value })}
               className="border border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
             >
               <option value="">Select Number of Years</option>
-              <option value="Male">0 - 1 year</option>
-              <option value="Female">2 - 5 years</option>
-              <option value="Female">5 - 10 years</option>
-              <option value="Female">2 - 5 years</option>
-              <option value="Female">Own a House</option>
+              <option value="0 - 1">0 - 1 year</option>
+              <option value="2 - 5">2 - 5 years</option>
+              <option value="5 - 10">5 - 10 years</option>
+              <option value="2 - 5">2 - 5 years</option>
+              <option value="house">Own a House</option>
             </select>
           </div>
 
-          <div>
-            <label htmlFor="education ">Education Level</label>
-            <input type="text" required className="border" />
+          <div className="flex flex-col gap-2">
+            <label htmlFor="education " className="form-label">Education Level <span className="text-red-500">*</span></label>
+            <input
+              value={data.education}
+              onChange={(e) => setData({ ...data, education: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
-          <div>
-            <label htmlFor="status ">Marital Status</label>
-            <input type="text" required className="border" />
+         </div>
+
+        <div className=" flex justify-between items-center w-full *:w-1/2 *:w-full gap-10">
+            <div className="flex flex-col gap-2">
+            <label htmlFor="status " className="form-label">Marital Status <span className="text-red-500">*</span></label>
+            <input
+              value={data.status}
+              onChange={(e) => setData({ ...data, status: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
-          <div>
-            <label htmlFor="status ">Employment Status</label>
-            <input type="text" required className="border" />
+          <div className="flex flex-col gap-2">
+            <label htmlFor="status " className="form-label">Employment Status <span className="text-red-500">*</span></label>
+            <input
+              value={data.employement}
+              onChange={(e) => setData({ ...data, employement: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
-          <div>
-            <label htmlFor="status ">
-              Have you received any grant in the past?
+          <div className="flex flex-col gap-2">
+            <label htmlFor="status " className="form-label">monthly income<span className="text-red-500">*</span></label>
+            <select 
+            value={data.income}
+              onChange={(e) => setData({ ...data, income: e.target.value })}
+            name="" id=""  className="border border-gray-300 rounded-md p-3 outline-none focus:border-blue-500">
+              <option value="">please select</option>
+              <option value="$0 - $1000">$0 - $1000</option>
+              <option value="$1000 - $3000">$1000 - $3000</option>
+              <option value="$3000 - $5000">$3000 - $5000</option>
+              <option value="$5000 +">$5000 +</option>
+            </select>
+          </div>
+        </div>
+
+         <div className=" flex justify-between items-start w-full *:w-1/2 *:w-full gap-10">
+           <div>
+            <label htmlFor="status " className="form-label">
+              Have you received any grant in the past? <span className="text-red-500">*</span>
             </label>
             <label className="flex items-center gap-2">
               <input
                 type="radio"
                 name="grant"
                 value="Yes"
-                checked={answer === "Yes"}
-                onChange={(e) => setAnswer(e.target.value)}
+                checked={data.grantRecieved === "Yes"}
+                onChange={(e) => setData({ ...data, grantRecieved: e.target.value })}
               />
               Yes
             </label>
@@ -195,62 +269,76 @@ const Page = () => {
                 type="radio"
                 name="grant"
                 value="No"
-                checked={answer === "No"}
-                onChange={(e) => setAnswer(e.target.value)}
+                checked={data.grantRecieved === "No"}
+                onChange={(e) => setData({ ...data, grantRecieved: e.target.value })}
               />
               No
             </label>
           </div>
 
           <div>
-            <label htmlFor="debt ">
+            <label htmlFor="debt " className="form-label">
               Do you have debt such as loans, mortgage, credit card debt and so
-              on (If yes, indicate with total amount)
+              on (If yes, indicate with total amount) <span className="text-red-500">*</span>
             </label>
-            <textarea rows={3} cols={40} className="border" name="message" id="message"></textarea>
+            <textarea
+              value={data.debt}
+              onChange={(e) => setData({ ...data, debt: e.target.value })}
+              rows={3} cols={40} className="border w-full"  ></textarea>
+          </div>
+         </div>
+
+          <div className=" flex justify-between items-start w-full *:w-1/2 *:w-full gap-10">
+            <div className="flex flex-col gap-2">
+            <label htmlFor="phone " className="form-label">Cell for SMS <span className="text-red-500">*</span></label>
+            <input
+              value={data.phone}
+              onChange={(e) => setData({ ...data, phone: e.target.value })}
+              type="text" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
           </div>
 
-          <div>
-            <label htmlFor="phone ">Cell for SMS</label>
-            <input type="text" required className="border" />
+          <div className="flex flex-col gap-2">
+            <label htmlFor="email " className="form-label">Email Address <span className="text-red-500">*</span></label>
+            <input
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              type="email" required className="border w-full outline-none text-sm p-3 border-gray-600 rounded-lg" />
+          </div>
           </div>
 
-          <div>
-            <label htmlFor="email ">Email Address</label>
-            <input type="text" required className="border" />
-          </div>
-
-          <div>
-            <label htmlFor="grantAmount ">Grant Amount</label>
+         <div className=" flex justify-between items-start w-full *:w-1/2 *:w-full gap-10">
+           <div className="flex flex-col gap-2">
+            <label htmlFor="grantAmount " className="form-label">Grant Amount <span className="text-red-500">*</span></label>
             <select
               id="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="border border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
+              value={data.grantAmount}
+              onChange={(e) => setData({ ...data, grantAmount: e.target.value })}
+              className="border w-full border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
             >
               <option value="">Please select</option>
-              <option value="Male">$1,000 - $5,0000</option>
-              <option value="Male">$5,000 - $10,0000</option>
-              <option value="Male">$10,000 - $50,0000</option>
+              <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+<option value="$5,000 - $10,000">$5,000 - $10,000</option>
+<option value="$10,000 - $50,000">$10,000 - $50,000</option>
             </select>
           </div>
 
-          <div>
-            <label htmlFor="grantAmount ">Grant Amount</label>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="grantAmount " className="form-label">Payment Type <span className="text-red-500">*</span></label>
             <select
               id="payment"
-              value={payment}
-              onChange={(e) => setPayment(e.target.value)}
-              className="border border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
+              value={data.paymentType}
+              onChange={(e) => setData({ ...data, paymentType: e.target.value })}
+              className="border w-full border-gray-300 rounded-md p-3 outline-none focus:border-blue-500"
             >
               <option value="">Payment Type</option>
-              <option value="Male">Check</option>
-              <option value="Male">Bank Tranfer</option>
-              <option value="Male">PayPal</option>
+              <option value="check">Check</option>
+              <option value="transfer">Bank Tranfer</option>
+              <option value="paypal">PayPal</option>
             </select>
           </div>
+         </div>
 
-          <button> submit application</button>
+          <button type="submit" className=" w-full flex items-center justify-center bg-blue-900 p-4 text-sm font-bold text-white cursor-pointer rounded-lg capitalize"> submit application</button>
         </form>
       </div>
 

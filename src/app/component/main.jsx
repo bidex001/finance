@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { useContext, useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../context/userContext";
 import {
   FaHandHoldingDollar,
@@ -32,7 +32,7 @@ const Main = () => {
 
   const scrollImg = [
     {
-      image: "/photo-1556761175-5973dc0f32e7.jpeg",
+      image: "/photo-1523240795612-9a054b0db644.jpeg",
       h2: "feature granted",
       h1: "education grant",
       para: "Pursue your academic dreams without financial burden! Our Education Grant provides funding for tuition, fees, and educational expenses. Apply now and take the first step towards achieving your educational goals.",
@@ -44,13 +44,13 @@ const Main = () => {
       para: `Fuel your entrepreneurial spirit! Whether {"you're"} a startup or an established enterprise, our Business Grants provide the capital you need for expansion, equipment, and innovation.`,
     },
     {
-      image: "/photo-1556761175-5973dc0f32e7.jpeg",
+      image: "/photo-1517245386807-bb43f82c33c4.jpeg",
       h2: "emergency aid",
       h1: "disaster relief",
       para: "Rebuild with confidence. Our Disaster Relief funds offer immediate assistance to communities and individuals affected by natural calamities, helping you get back on your feet.",
     },
     {
-      image: "/photo-1556761175-5973dc0f32e7.jpeg",
+      image: "/photo-1554224155-8d04cb21cd6c.jpeg",
       h2: "personal support",
       h1: "individual funds",
       para: "Personal grants tailored to your unique needs. From debt relief to personal projects, we provide the financial backing to help you improve your quality of life.",
@@ -67,13 +67,12 @@ const Main = () => {
     setcurrent((prev) => (prev + 1) % scrollImg.length);
   }
 
-  useEffect(()=>{
-    const interval = setInterval(()=>{
-
-      rightslider()
-    },3000)
-    return () => clearInterval(interval)
-  },[])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      rightslider();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="w-full  h-full min-h-screen flex flex-col *:w-full">
@@ -116,40 +115,49 @@ const Main = () => {
 
         <div className="w-full h-120 justify-center overflow-x-hidden flex">
           <div
-            className="flex w-full transition-transform duration-500"
+            className=" flex w-full transition-transform duration-500"
             style={{
               transform: `translateX(-${current * 100}vw)`,
             }}
           >
-            {
-              scrollImg && scrollImg.map((slide,i)=>{
-                return(
-                  <div 
-                  key={i}
-                  className=" w-screen h-full relative shrink-0   ">
-              <Image
-                src={slide.image}
-                alt="img"
-                fill
-                className=" z-0  object-cover "
-              />
-              <div className=" flex w-full pr-10 absolute h-full top-0 justify-between items-center">
-                <div className=" flex">
-                  <button onClick={leftSlider}>
-                    <PiLessThanBold />
-                  </button>
-                  <h2>{slide.h2}</h2>
-                  <h1>{slide.h1}</h1>
-                  <p>{slide.para}</p>
-                </div>
-                <button onClick={rightslider}>
-                  <PiGreaterThanBold />
-                </button>
-              </div>
-            </div>
-                )
-              })
-            }
+            {scrollImg &&
+              scrollImg.map((slide, i) => {
+                return (
+                  <div
+                    key={i}
+                    className=" w-screen h-full relative shrink-0   "
+                  >
+                    <Image
+                      src={slide.image}
+                      alt="img"
+                      fill
+                      className=" z-0  object-cover "
+                    />
+                    <div className=" flex w-full pr-10 absolute h-full top-0 justify-between items-center">
+                      <div className=" flex px-5">
+                        <button className="bg-amber-300 " onClick={leftSlider}>
+                          <PiLessThanBold />
+                        </button>
+                        <div className="flex flex-col [&_h2]:uppercase [&_h2]:bg-amber-400 [&_h2]:w-fit 
+                         [&_h2]:py-3 [&_h2]:rounded-xl [&_h2]:px-5 px-15 
+                          [&_h1]:uppercase [&_h1]:text-6xl [&_h2]:font-bold [&_h1]:text-white
+                           [&_p]:text-white [&_p]:w-140">
+                          <h2>{slide.h2}</h2>
+                          <h1>{slide.h1}</h1>
+                          <p>{slide.para}</p>
+
+                          <button className="uppercase text-white font-bold bg-amber-300 w-30 py-3">
+                            apply now
+                          </button>
+                        </div>
+                      </div>
+                      <button onClick={rightslider}>
+                        <PiGreaterThanBold />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
 
@@ -492,16 +500,16 @@ const Main = () => {
               here.
             </p>
             <div className="flex gap-5">
-              <Link href={'/apply'}>
-              <button 
-                className="bg-amber-300 uppercase px-10 py-3 font-bold rounded-full cursor-pointer
+              <Link href={"/apply"}>
+                <button
+                  className="bg-amber-300 uppercase px-10 py-3 font-bold rounded-full cursor-pointer
                 hover:bg-white transition-transform duration-300"
-              >
-                apply for grant
-              </button>
+                >
+                  apply for grant
+                </button>
               </Link>
-              <button 
-              onClick={() => scrollToSection(contactRef)}
+              <button
+                onClick={() => scrollToSection(contactRef)}
                 className="border-2 uppercase border-white px-10 py-3 rounded-full text-white font-bold
                hover:bg-white hover:text-black"
               >
@@ -515,7 +523,15 @@ const Main = () => {
       {/*contact */}
 
       <section ref={contactRef}>
-        <div className="h-100">map</div>
+        <div className="h-100 w-full overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps?q=New%20York%2C%20USA&z=12&output=embed"
+            title="Google Map"
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
 
         <div className="flex flex-col">
           <div className="flex gap-10 p-20 bg-[#2c3e50]">

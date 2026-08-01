@@ -9,6 +9,14 @@ const Header = () => {
   const { homeRef, programsRef, aboutRef, contactRef, scrollToSection } =
     useContext(AppContext);
 
+  const handleNavClick = (ref) => {
+    if (ref?.current) {
+      scrollToSection(ref);
+    } else {
+      window.location.href = "/";
+    }
+  };
+
   return (
     <div className="w-full h-fit sticky top-0 z-50 shadow-2xl bg-white flex justify-between items-center py-2 px-15 ">
       <div className="flex items-center">
@@ -24,10 +32,10 @@ const Header = () => {
       </div>
 
       <div className="flex items-center gap-5 [&_p]:font-bold [&_p]:text-gray-500 [&_p]:cursor-pointer [&_p]:hover:text-gray-800 *:capitalize">
-        <p onClick={() => scrollToSection(homeRef)}>home</p>
-        <p onClick={() => scrollToSection(programsRef)}>programs</p>
-        <p onClick={() => scrollToSection(aboutRef)}>about</p>
-        <p onClick={() => scrollToSection(contactRef)}>contact</p>
+        <p onClick={() => handleNavClick(homeRef)}>home</p>
+        <p onClick={() => handleNavClick(programsRef)}>programs</p>
+        <p onClick={() => handleNavClick(aboutRef)}>about</p>
+        <p onClick={() => handleNavClick(contactRef)}>contact</p>
 
         <Link href={"/apply"}>
           <button
