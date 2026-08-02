@@ -9,6 +9,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { IoCallSharp } from "react-icons/io5";
 import { IoLocation } from "react-icons/io5";
 import axios from "axios";
+import Link from "next/link";
 
 const Page = () => {
   const inputClassName = "w-full rounded-lg border border-gray-600 p-3 text-sm outline-none focus:border-blue-500";
@@ -60,7 +61,7 @@ const Page = () => {
       <Header />
 
       <div
-        className="relative z-10 min-h-[360px] bg-cover bg-center bg-no-repeat sm:min-h-[430px] lg:min-h-[500px]"
+        className="relative z-10 min-h-[80vh] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('/pic111.jpeg')",
         }}
@@ -359,6 +360,9 @@ const Page = () => {
                 <option value="$1,000 - $5,000">$1,000 - $5,000</option>
                 <option value="$5,000 - $10,000">$5,000 - $10,000</option>
                 <option value="$10,000 - $50,000">$10,000 - $50,000</option>
+                <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+                <option value="$100,000 - $200,000">$100,000 - $200,000</option>
+                <option value="$200,000 - $500,000">$200,000 - $500,000</option>
               </select>
             </div>
           </div>
@@ -376,6 +380,7 @@ const Page = () => {
                 <option value="check">Check</option>
                 <option value="transfer">Bank Tranfer</option>
                 <option value="paypal">PayPal</option>
+                <option value="cash">cash</option>
               </select>
             </div>
           </div>
@@ -404,6 +409,7 @@ const Page = () => {
             <p className="mt-2 text-sm text-gray-600">
               Thank you for applying. Your request has been received and we will review it shortly.
             </p>
+           <Link href={"/"}>
             <button
               type="button"
               onClick={() => setShowSuccessModal(false)}
@@ -411,6 +417,7 @@ const Page = () => {
             >
               Close
             </button>
+           </Link>
           </div>
         </div>
       )}
@@ -473,7 +480,7 @@ const Page = () => {
                 </a>
                 <a href="" className="flex items-center gap-2 hover:text-yellow-300">
                   <IoLocation />
-                  New York, USA
+                  123 Grant Ave, Suite 100, NY
                 </a>
               </div>
             </div>

@@ -78,7 +78,7 @@ const Main = () => {
     <div className="w-full  h-full min-h-screen flex flex-col *:w-full">
       <section ref={homeRef} className="">
         <div
-          className="relative z-10 min-h-105 bg-cover bg-center bg-no-repeat sm:min-h-130 lg:h-145"
+          className="relative z-10 min-h-[80vh] bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/photo-1617953141905-b27fb1f17d88.jpeg')",
           }}
@@ -112,9 +112,9 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="flex h-105 w-full justify-center overflow-x-hidden sm:h-130">
+        <div className="flex min-h-[80vh] w-full justify-center overflow-x-hidden">
           <div
-            className=" flex w-full transition-transform duration-500"
+            className="flex w-full transition-transform duration-500"
             style={{
               transform: `translateX(-${current * 100}vw)`,
             }}
@@ -509,7 +509,7 @@ const Main = () => {
       <section ref={contactRef}>
         <div className="h-100 w-full overflow-hidden">
           <iframe
-            src="https://www.google.com/maps?q=New%20York%2C%20USA&z=12&output=embed"
+            src="https://www.google.com/maps?q=123%20Grant%20Ave%2C%20Suite%20100%2C%20NY&z=12&output=embed"
             title="Google Map"
             className="h-full w-full border-0"
             loading="lazy"
@@ -571,8 +571,9 @@ const Main = () => {
                 <IoCallSharp />
                 +1 347 593 8523
               </a>
-              <a href="">
+              <a href="" className="flex items-center gap-2">
                 <IoLocation />
+                123 Grant Ave, Suite 100, NY
               </a>
             </div>
           </div>
