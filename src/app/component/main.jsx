@@ -161,16 +161,14 @@ const Main = () => {
           <h2 className="mb-10 text-3xl font-bold text-center sm:text-4xl lg:text-5xl">
             What our past winners say
           </h2>
-          <div className="flex w-full flex-wrap gap-6 md:gap-8">
-            <div className="">
-              <div className="flex h-80 w-full overflow-hidden">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-1/4">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
-                  src={"/photo-1573496359142-b8d87734a5a2.jpeg"}
-                  alt="
-                    img"
-                  width={100}
-                  height={100}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-110"
+                  src="/photo-1573496359142-b8d87734a5a2.jpeg"
+                  alt="img"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div className="">
@@ -184,15 +182,13 @@ const Main = () => {
                 </p>
               </div>
             </div>
-            <div className="">
-              <div className="flex h-80 w-full overflow-hidden">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-1/4">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
-                  src={"/photo-1560250097-0b93528c311a.jpeg"}
-                  alt="
-                    img"
-                  width={100}
-                  height={100}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-110"
+                  src="/photo-1560250097-0b93528c311a.jpeg"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                  alt="img"
                 />
               </div>
               <div className="">
@@ -207,15 +203,13 @@ const Main = () => {
               </div>
             </div>
 
-            <div className="">
-              <div className="flex h-80 w-full overflow-hidden">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-1/4">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
-                  src={"/photo-1541534741688-6078c6bfb5c5.jpeg"}
-                  alt="
-                    img"
-                  width={100}
-                  height={100}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-110"
+                  src="/photo-1541534741688-6078c6bfb5c5.jpeg"
+                  alt="img"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div className="">
@@ -230,15 +224,13 @@ const Main = () => {
               </div>
             </div>
 
-            <div className="">
-              <div className="flex h-80 w-full overflow-hidden">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-1/4">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
-                  src={"/photo-1544005313-94ddf0286df2.jpeg"}
-                  alt="
-                    img"
-                  width={100}
-                  height={100}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-110"
+                  src="/photo-1560250097-0b93528c311a.jpeg"
+                  alt="img"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div className="">
@@ -253,15 +245,13 @@ const Main = () => {
               </div>
             </div>
 
-            <div className="">
-              <div className="flex h-80 w-full overflow-hidden">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-1/4">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
-                  src={"/photo-1531384441138-2736e62e0919.jpeg"}
-                  alt="
-                    img"
-                  width={100}
-                  height={100}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-110"
+                  src="/photo-1531384441138-2736e62e0919.jpeg"
+                  alt="img"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div className="">
@@ -276,15 +266,13 @@ const Main = () => {
               </div>
             </div>
 
-            <div className="">
-              <div className="flex h-80 w-full overflow-hidden">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-1/4">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
-                  src={"/photo-1438761681033-6461ffad8d80.jpeg"}
-                  alt="
-                    img"
-                  width={100}
-                  height={100}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-110"
+                  src="/photo-1438761681033-6461ffad8d80.jpeg"
+                  alt="img"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div className="">
@@ -319,8 +307,8 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 px-4 sm:px-8 lg:px-20">
-          <div className="h-fit w-full rounded-2xl bg-white p-10 shadow-lg transition-transform duration-300 hover:scale-105 sm:w-[calc(50%-1rem)] lg:w-75">
+        <div className="flex flex-wrap *:bg-white justify-start gap-20 px-4 sm:px-8 lg:px-20">
+          <div className="w-full h-fit rounded-2xl bg-white p-10 shadow-lg transition-transform duration-300 hover:scale-105 sm:w-[calc(50%-1rem)] lg:w-1/4">
             <div className="w-fit p-4 rounded-full bg-gray-100">
               <FaHandHoldingDollar size={30} color="#2c3e50" />
             </div>
@@ -336,7 +324,7 @@ const Main = () => {
             </button>
           </div>
 
-          <div className="p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50">
+          <div className="w-full p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50 sm:w-[calc(50%-1rem)] lg:w-1/4">
             <div className="w-fit p-4 rounded-full bg-gray-100">
               <FaHouseCrack size={30} color="#2c3e50" />
             </div>
@@ -352,7 +340,7 @@ const Main = () => {
             </button>
           </div>
 
-          <div className="p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50">
+          <div className="w-full p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50 sm:w-[calc(50%-1rem)] lg:w-1/4">
             <div className="w-fit p-4 rounded-full bg-gray-100">
               <FaGraduationCap size={30} color="#2c3e50" />
             </div>
@@ -368,7 +356,7 @@ const Main = () => {
             </button>
           </div>
 
-          <div className="p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50">
+          <div className="w-full p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50 sm:w-[calc(50%-1rem)] lg:w-1/4">
             <div className="w-fit p-4 rounded-full bg-gray-100">
               <MdBusinessCenter size={30} color="#2c3e50" />
             </div>

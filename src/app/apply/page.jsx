@@ -416,69 +416,69 @@ const Page = () => {
       )}
 
       {/*footer*/}
-      <div className="flex flex-col">
-        <div className="flex gap-10 p-20 bg-[#2c3e50]">
-          <div
-            className="[&>a:first-child]:text-4xl [&>a:first-child]:uppercase [&>a:first-child]:text-yellow-300 [&>a:first-child]:font-bold
-                     [&_p]:w-80 [&_p]:text-gray-400 [&_p]:mt-3 [&_p]:mb-5"
-          >
-            <a href="/" className="tracking-[-2]">
+      <div className="bg-[#2c3e50] px-4 py-10 sm:px-8 lg:px-20">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-xl space-y-4 sm:max-w-lg">
+            <a href="/" className="block text-4xl uppercase font-bold tracking-[-2] text-yellow-300">
               cggf
             </a>
-            <p>
+            <p className="max-w-md text-gray-400">
               Empowering communities worldwide through financial support and
               partnership.
             </p>
-            <div
-              className="flex gap-3  [&_a]:bg-gray-500 [&_a]:cursor-pointer [&_a]:text-white 
-                       [&_a]:p-3 [&_a]:rounded-full"
-            >
+            <div className="flex gap-3">
               <a
                 href="https://www.facebook.com/Agentmeganlynn?from_xma_click=1"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500 text-white"
               >
                 <FaFacebookF />
               </a>
-              <a href="">
+              <a href="" className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500 text-white">
                 <FaXTwitter />
               </a>
-              <a href="">
+              <a href="" className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500 text-white">
                 <FaLinkedinIn />
               </a>
             </div>
           </div>
 
-          <div
-            className="flex flex-col capitalize [&_h2]:font-bold [&_h2]:text-xl [&_h2]:text-white
-                     [&_h2]:mb-3"
-          >
-            <h2>quick links</h2>
-            <div className="flex flex-col *:hover:text-yellow-300 *:cursor-pointer *:text-gray-400 *:capitalize">
-              <p onClick={() => scrollToSection(homeRef)}>home</p>
-              <p onClick={() => scrollToSection(programsRef)}>programs</p>
-              <p onClick={() => scrollToSection(aboutRef)}>about</p>
-              <p onClick={() => scrollToSection(contactRef)}>contact</p>
-              <p>apply now</p>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:flex-1">
+            <div className="space-y-3 capitalize">
+              <h2 className="text-xl font-bold text-white">quick links</h2>
+              <div className="flex flex-col gap-2 text-gray-400">
+                <p onClick={() => scrollToSection(homeRef)} className="cursor-pointer hover:text-yellow-300">
+                  home
+                </p>
+                <p onClick={() => scrollToSection(programsRef)} className="cursor-pointer hover:text-yellow-300">
+                  programs
+                </p>
+                <p onClick={() => scrollToSection(aboutRef)} className="cursor-pointer hover:text-yellow-300">
+                  about
+                </p>
+                <p onClick={() => scrollToSection(contactRef)} className="cursor-pointer hover:text-yellow-300">
+                  contact
+                </p>
+                <p className="cursor-pointer hover:text-yellow-300">apply now</p>
+              </div>
+            </div>
+
+            <div className="space-y-3 capitalize">
+              <h2 className="text-xl font-bold text-white">contact info</h2>
+              <div className="space-y-2 text-gray-400">
+                <a href="tel:+13475938523" className="flex items-center gap-2 hover:text-yellow-300">
+                  <IoCallSharp />
+                  +1 347 593 8523
+                </a>
+                <a href="" className="flex items-center gap-2 hover:text-yellow-300">
+                  <IoLocation />
+                  New York, USA
+                </a>
+              </div>
             </div>
           </div>
-
-          <div
-            className="flex flex-col capitalize [&_a]:gap-2 [&_a]:leading-10 [&_a]:hover:text-yellow-400 [&_h2]:font-bold [&_h2]:text-xl [&_h2]:text-white
-                     [&_h2]:mb-3 [&_a]:text-gray-400"
-          >
-            <h2>contact info</h2>
-            <a href="tel:+13475938523" className="flex items-center">
-              <IoCallSharp />
-              +1 347 593 8523
-            </a>
-            <a href="">
-              <IoLocation />
-            </a>
-          </div>
         </div>
-
-        <div className=""></div>
       </div>
     </div>
   );
