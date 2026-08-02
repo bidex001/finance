@@ -78,34 +78,33 @@ const Main = () => {
     <div className="w-full  h-full min-h-screen flex flex-col *:w-full">
       <section ref={homeRef} className="">
         <div
-          className="relative z-10 h-120 bg-cover bg-center bg-no-repeat"
+          className="relative z-10 min-h-105 bg-cover bg-center bg-no-repeat sm:min-h-130 lg:h-145"
           style={{
             backgroundImage: "url('/photo-1617953141905-b27fb1f17d88.jpeg')",
           }}
         >
-          <div className="flex flex-col text-center items-center justify-center absolute inset-0 bg-black/50">
-            <h1 className="uppercase text-amber-300 text-1xl font-bold tracking-wider">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 px-4 py-10 text-center sm:px-8 lg:px-12">
+            <h1 className="text-sm font-bold uppercase tracking-wider text-amber-300 sm:text-base lg:text-lg">
               Financial empowerment
             </h1>
-            <p className="uppercase text-white text-7xl font-bold mt-5 mb-5">
+            <p className="mt-4 mb-4 text-4xl font-bold uppercase text-white sm:text-5xl lg:text-7xl">
               Hope for <span className="text-amber-300">all</span>
             </p>
-            <p className="text-white w-185 font-bold">
+            <p className="max-w-3xl text-sm font-bold text-white sm:text-base lg:text-lg">
               Connecting individuals, businesses, and communities with funding
               opportunities worldwide. Your future starts with the right
               support.
             </p>
-            <div className="flex gap-8 mt-8">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
               <button
                 onClick={() => scrollToSection(programsRef)}
-                className="bg-amber-300 uppercase px-10 py-3 font-bold rounded-full cursor-pointer
-                hover:bg-amber-200 transition-transform duration-300"
+                className="rounded-full bg-amber-300 px-6 py-3 font-bold uppercase transition hover:bg-amber-200 sm:px-8"
               >
                 Explore programs
               </button>
               <button
                 onClick={() => scrollToSection(aboutRef)}
-                className="border-2 uppercase border-white px-10 py-3 rounded-full text-white font-bold"
+                className="rounded-full border-2 border-white px-6 py-3 font-bold uppercase text-white sm:px-8"
               >
                 Learn more
               </button>
@@ -113,7 +112,7 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="w-full h-120 justify-center overflow-x-hidden flex">
+        <div className="flex h-105 w-full justify-center overflow-x-hidden sm:h-130">
           <div
             className=" flex w-full transition-transform duration-500"
             style={{
@@ -133,25 +132,22 @@ const Main = () => {
                       fill
                       className=" z-0  object-cover "
                     />
-                    <div className=" flex w-full pr-10 absolute h-full top-0 justify-between items-center">
-                      <div className=" flex px-5">
-                        <button className="bg-amber-300 " onClick={leftSlider}>
+                    <div className="absolute top-0 flex h-full w-full items-center justify-between px-3 sm:px-6 lg:px-10">
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <button className="rounded-full bg-amber-300 p-2 text-white" onClick={leftSlider}>
                           <PiLessThanBold />
                         </button>
-                        <div className="flex flex-col [&_h2]:uppercase [&_h2]:bg-amber-400 [&_h2]:w-fit 
-                         [&_h2]:py-3 [&_h2]:rounded-xl [&_h2]:px-5 px-15 
-                          [&_h1]:uppercase [&_h1]:text-6xl [&_h2]:font-bold [&_h1]:text-white
-                           [&_p]:text-white [&_p]:w-140">
+                        <div className="flex max-w-[90%] flex-col gap-3 px-2 sm:max-w-[80%] lg:max-w-175 lg:px-8 [&_h2]:w-fit [&_h2]:rounded-xl [&_h2]:bg-amber-400 [&_h2]:px-4 [&_h2]:py-2 [&_h2]:font-bold [&_h2]:uppercase [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:uppercase [&_h1]:text-white sm:[&_h1]:text-4xl lg:[&_h1]:text-6xl [&_p]:text-sm [&_p]:text-white sm:[&_p]:text-base lg:[&_p]:max-w-160">
                           <h2>{slide.h2}</h2>
                           <h1>{slide.h1}</h1>
                           <p>{slide.para}</p>
 
-                          <button className="uppercase text-white font-bold bg-amber-300 w-30 py-3">
+                          <button className="w-fit rounded-full bg-amber-300 px-5 py-3 font-bold uppercase text-white">
                             apply now
                           </button>
                         </div>
                       </div>
-                      <button onClick={rightslider}>
+                      <button className="rounded-full bg-white/70 p-2 text-gray-800" onClick={rightslider}>
                         <PiGreaterThanBold />
                       </button>
                     </div>
@@ -161,11 +157,11 @@ const Main = () => {
           </div>
         </div>
 
-        <div className=" flex flex-col items-center justify-center px-10 py-20">
-          <h2 className="text-5xl mb-10 font-bold">
+        <div className="flex flex-col items-center justify-center px-4 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <h2 className="mb-10 text-3xl font-bold text-center sm:text-4xl lg:text-5xl">
             What our past winners say
           </h2>
-          <div className="flex flex-wrap *:p-4 *:w-1/3">
+          <div className="flex w-full flex-wrap gap-6 md:gap-8">
             <div className="">
               <div className="flex h-80 w-full overflow-hidden">
                 <Image
@@ -311,20 +307,20 @@ const Main = () => {
         ref={programsRef}
         className="flex flex-col items-center bg-gray-100 py-20"
       >
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center px-4 sm:px-0">
           <h3 className="uppercase font-bold tracking-wider">what we offer</h3>
-          <p className="capitalize mt-5 mb-5 text-5xl font-bold">
+          <p className="capitalize mt-5 mb-5 text-3xl sm:text-5xl font-bold leading-tight">
             program categories
           </p>
-          <div className="w-15 h-1 bg-amber-400 mb-5"></div>
-          <p className=" w-180 tracking-wider mb-10">
+          <div className="w-16 sm:w-32 h-1 bg-amber-400 mb-5"></div>
+          <p className="max-w-xl sm:max-w-2xl mx-auto tracking-wider mb-10 text-sm sm:text-base">
             We strive to empower our applicants by offering a diverse range of
             grant opportunities tailored to your needs.
           </p>
         </div>
 
-        <div className=" flex flex-wrap px-20 *:h-fit gap-10 *:w-[330px] *:bg-white ">
-          <div className="p-10 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 active:scale-50">
+        <div className="flex flex-wrap justify-center gap-8 px-4 sm:px-8 lg:px-20">
+          <div className="h-fit w-full rounded-2xl bg-white p-10 shadow-lg transition-transform duration-300 hover:scale-105 sm:w-[calc(50%-1rem)] lg:w-75">
             <div className="w-fit p-4 rounded-full bg-gray-100">
               <FaHandHoldingDollar size={30} color="#2c3e50" />
             </div>
@@ -393,8 +389,8 @@ const Main = () => {
       {/*about */}
 
       <section ref={aboutRef} className="flex flex-col">
-        <div className="flex items-center gap-10 *:w-1/2 px-20">
-          <div className="py-20">
+        <div className="flex flex-col gap-8 px-4 py-10 sm:px-8 lg:flex-row lg:items-center lg:gap-10 lg:px-20 lg:py-20">
+          <div className="w-full lg:w-1/2">
             <h2 className="uppercase text-blue-700 font-bold tracking-wider">
               who we are
             </h2>
@@ -426,14 +422,14 @@ const Main = () => {
             </button>
           </div>
           <div
-            className="rounded-2xl z-10 h-80 bg-cover bg-center bg-no-repeat"
+            className="h-72 w-full rounded-2xl bg-cover bg-center bg-no-repeat lg:h-80 lg:w-1/2"
             style={{
               backgroundImage: "url('/photo-1556761175-5973dc0f32e7.jpeg')",
             }}
           ></div>
         </div>
 
-        <div className="flex justify-center gap-20 bg-[#2c3e50] p-20">
+        <div className="grid grid-cols-1 gap-8 bg-[#2c3e50] p-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-20 lg:p-20">
           {stats.map(({ value, label }) => (
             <div key={label} className="flex flex-col items-center gap-5">
               <p className="text-6xl font-extrabold text-yellow-300">{value}</p>
@@ -442,9 +438,9 @@ const Main = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-13 *:w-1/2 px-20">
+        <div className="flex flex-col gap-8 px-4 py-10 sm:px-8 lg:flex-row lg:items-center lg:gap-13 lg:px-20">
           <div
-            className="rounded-2xl z-10 h-90 bg-cover bg-center bg-no-repeat"
+            className="h-72 w-full rounded-2xl bg-cover bg-center bg-no-repeat lg:h-90 lg:w-1/2"
             style={{
               backgroundImage: "url('/photo-1559027615-cd4628902d4a.jpeg')",
             }}
@@ -483,15 +479,15 @@ const Main = () => {
         </div>
 
         <div
-          className="flex text-center items-center justify-center h-screen bg-no-repeat bg-cover bg-center bg-fixed"
+          className="flex min-h-105 items-center justify-center bg-cover bg-center bg-fixed px-4 py-16 sm:min-h-130 lg:h-screen lg:px-8"
           style={{
             backgroundImage: "url('/photo-1500382017468-9049fed747ef.jpeg')",
           }}
         >
           <div
-            className="flex flex-col items-center rounded-2xl p-20 backdrop-blur bg-black/40
-          [&_h2]:text-white [&_h2]:text-6xl [&_h2]:font-medium [&_h2]:capitalize 
-          [&_p]:text-white [&_p]:w-150 [&_p]:font-medium [&_p]:mt-5 [&_p]:mb-5"
+            className="flex flex-col items-center rounded-2xl bg-black/40 p-6 text-center backdrop-blur sm:p-10 lg:p-20
+          [&_h2]:text-white [&_h2]:text-3xl [&_h2]:font-medium [&_h2]:capitalize sm:[&_h2]:text-4xl lg:[&_h2]:text-6xl
+          [&_p]:mt-5 [&_p]:mb-5 [&_p]:text-sm [&_p]:text-white [&_p]:font-medium sm:[&_p]:text-base lg:[&_p]:max-w-150 lg:[&_p]:text-lg"
           >
             <h2>ready to start your journey?</h2>
             <p>
@@ -499,7 +495,7 @@ const Main = () => {
               you achieve your goals. Your path to financial empowerment starts
               here.
             </p>
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-4 sm:flex-row">
               <Link href={"/apply"}>
                 <button
                   className="bg-amber-300 uppercase px-10 py-3 font-bold rounded-full cursor-pointer
@@ -534,14 +530,14 @@ const Main = () => {
         </div>
 
         <div className="flex flex-col">
-          <div className="flex gap-10 p-20 bg-[#2c3e50]">
+          <div className="flex flex-col gap-8 bg-[#2c3e50] p-6 sm:p-10 lg:flex-row lg:gap-10 lg:p-20">
             <div
               className="[&>a:first-child]:text-4xl [&>a:first-child]:uppercase [&>a:first-child]:text-yellow-300 [&>a:first-child]:font-bold
-             [&_p]:w-80 [&_p]:text-gray-400 [&_p]:mt-3 [&_p]:mb-5"
+             [&_p]:max-w-70 [&_p]:text-gray-400 [&_p]:mt-3 [&_p]:mb-5"
             >
-              <a href="/" className="tracking-[-2]">
+              <Link href="/" className="tracking-[-2]">
                 cggf
-              </a>
+              </Link>
               <p>
                 Empowering communities worldwide through financial support and
                 partnership.
@@ -567,8 +563,7 @@ const Main = () => {
             </div>
 
             <div
-              className="flex flex-col capitalize [&_h2]:font-bold [&_h2]:text-xl [&_h2]:text-white
-             [&_h2]:mb-3"
+              className="flex flex-col capitalize [&_h2]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-white"
             >
               <h2>quick links</h2>
               <div className="flex flex-col *:hover:text-yellow-300 *:cursor-pointer *:text-gray-400 *:capitalize">
@@ -581,8 +576,7 @@ const Main = () => {
             </div>
 
             <div
-              className="flex flex-col capitalize [&_a]:gap-2 [&_a]:leading-10 [&_a]:hover:text-yellow-400 [&_h2]:font-bold [&_h2]:text-xl [&_h2]:text-white
-             [&_h2]:mb-3 [&_a]:text-gray-400"
+              className="flex flex-col capitalize [&_a]:gap-2 [&_a]:leading-10 [&_a]:text-gray-400 [&_a]:hover:text-yellow-400 [&_h2]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-white"
             >
               <h2>contact info</h2>
               <a href="tel:+13475938523" className="flex items-center">
