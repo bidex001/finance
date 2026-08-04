@@ -13,8 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
- title: "Commonwealth Global Grant | Empowering Opportunities",
-  description: "Learn about Commonwealth Global Grant programs, opportunities, and services.",
+  title: "Commonwealth Global Grant",
+  description: "Official Commonwealth Global Grant website",
+  openGraph: {
+    title: "Commonwealth Global Grant",
+    description: "Scholarships and grant opportunities.",
+    url: "https://commonwealthglobalgrant.org",
+    siteName: "Commonwealth Global Grant",
+    images: [
+      {
+        url: "/banner.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
