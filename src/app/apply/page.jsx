@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useRef, useState } from "react";
 import Header from "../component/header";
-import { useState } from "react";
 
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -13,6 +12,7 @@ import Link from "next/link";
 
 const Page = () => {
   const inputClassName = "w-full rounded-lg border border-gray-600 p-3 text-sm outline-none focus:border-blue-500";
+  const formSectionRef = useRef(null);
 
   const [data, setData] = useState({
     name: "",
@@ -38,6 +38,10 @@ const Page = () => {
     paymentType: "",
   });
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const handleStartClick = () => {
+    formSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -75,6 +79,8 @@ const Page = () => {
             a chance to win a grant from us.
           </p>
           <button
+            type="button"
+            onClick={handleStartClick}
             className="w-full rounded-full border-2 border-white px-4 py-2 text-sm font-bold capitalize text-white transition hover:bg-white hover:text-black sm:w-52 sm:px-6"
           >
             get started
@@ -88,7 +94,7 @@ const Page = () => {
           all application reguirements are to be filled out correctly
         </p>
 
-        <form onSubmit={handleSubmit} className="mx-auto flex w-full max-w-[1000px] flex-col gap-8">
+        <form ref={formSectionRef} onSubmit={handleSubmit} className="mx-auto flex w-full max-w-[1000px] flex-col gap-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-start">
             <div className="flex w-full flex-col gap-2 md:w-1/2">
               <label htmlFor="fname" className="form-label">first name <span className="text-red-500">*</span></label>

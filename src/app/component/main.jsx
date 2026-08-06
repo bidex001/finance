@@ -142,9 +142,10 @@ const Main = () => {
                           <h1>{slide.h1}</h1>
                           <p>{slide.para}</p>
 
+                          <Link href={"/apply"}>
                           <button className="w-fit rounded-full bg-amber-300 px-5 py-3 font-bold uppercase text-white">
                             apply now
-                          </button>
+                          </button></Link>
                         </div>
                       </div>
                       <button className="rounded-full bg-white/70 p-2 text-gray-800" onClick={rightslider}>
