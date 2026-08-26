@@ -432,16 +432,16 @@ const Page = () => {
       <div className="bg-[#2c3e50] px-4 py-10 sm:px-8 lg:px-20">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xl space-y-4 sm:max-w-lg">
-            <a href="/" className="block text-4xl uppercase font-bold tracking-[-2] text-yellow-300">
+            <Link href="/" className="block text-4xl uppercase font-bold tracking-[-2] text-yellow-300">
               cggf
-            </a>
+            </Link>
             <p className="max-w-md text-gray-400">
               Empowering communities worldwide through financial support and
               partnership.
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.facebook.com/Agentmeganlynn?from_xma_click=1"
+                href="https://www.facebook.com/Commonwealthglobalgrantfunding"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500 text-white"
